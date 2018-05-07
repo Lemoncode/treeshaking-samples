@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { HelloComponent } from './hello';
 import { NameEditComponent } from './nameEdit';
-import {AppBar} from "material-ui";
-import {MuiThemeProvider} from "material-ui/styles";
+import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 interface Props {
