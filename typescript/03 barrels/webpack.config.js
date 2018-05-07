@@ -9,7 +9,10 @@ let basePath = __dirname;
 module.exports = {
   context: path.join(basePath, "src"),
   resolve: {
-    extensions: ['.js', '.ts', '.tsx']
+    extensions: ['.js', '.ts', '.tsx'],
+    alias: {
+      "material-ui": 'material-ui/es'
+    }
   },
   entry: [
     './main.tsx',
@@ -17,7 +20,7 @@ module.exports = {
   ],
   output: {
     path: path.join(basePath, 'dist'),
-    filename: 'bundle.js',        
+    filename: 'bundle.js',
   },
   devtool: 'source-map',
   devServer: {
@@ -26,7 +29,7 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     stats: 'errors-only'
-  },  
+  },
   module: {
     rules: [
       {
@@ -38,7 +41,7 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,        
+        test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
