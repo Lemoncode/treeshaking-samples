@@ -40,6 +40,20 @@ import { NameEditComponent } from './nameEdit';
 + import {AppBar, Toolbar, Typography, MuiThemeProvider} from "material-ui";
 ```
 
+- In our webpack config let's create an alias to make material ui imports point to
+it's es6 version.
+
+_webpack.config.js_
+
+```diff
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx'],
++    alias: {
++      "material-ui": 'material-ui/es'
++    }
+  },
+```
+
 - Let's add some updates on the tsx (new version has some breaking changes)
 
 _app.tsx_
