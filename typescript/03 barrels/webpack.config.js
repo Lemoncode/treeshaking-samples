@@ -10,9 +10,9 @@ module.exports = {
   context: path.join(basePath, "src"),
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
-    alias: {
-      "material-ui": 'material-ui/es'
-    }
+    // alias: {
+    //   "material-ui": 'material-ui/es'
+    // }
   },
   entry: [
     './main.tsx',

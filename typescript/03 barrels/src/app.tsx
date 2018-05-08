@@ -1,23 +1,20 @@
+import { AppBar, Toolbar, Typography } from "material-ui";
 import * as React from 'react';
 import { HelloComponent } from './hello';
 import { NameEditComponent } from './nameEdit';
-import {AppBar, Toolbar, Typography, MuiThemeProvider} from "material-ui";
-
-interface Props {
-}
 
 interface State {
   userName: string;
 }
 
-export class App extends React.Component<Props, State> {
-  constructor(props: Props) {
+export class App extends React.Component<{}, State> {
+  constructor(props) {
     super(props);
 
     this.state = { userName: 'defaultUserName' };
   }
 
-  setUsernameState = (event) => {
+  setUsernameState = (event: React.ChangeEvent<any>) => {
     this.setState({ userName: event.target.value });
   }
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 interface Props {
   userName : string;
-  onChange : (event) => void;
+  onChange:(event: React.ChangeEvent<any>) => void;
 }
 
 export const NameEditComponent = (props : Props) => {
