@@ -1,14 +1,12 @@
-# No tree shaking material ui
+# Tree shaking plus barrels
 
-This sample start from 00 Base, in this case we are going to install a popular ui library (material ui)
-and we are going to import components from there in way that tree shaking is not enabled (we are not
-importing in es6 modules mode)
+This sample start from 01 no-treeshaking-material-ui, in this case we want to keep on using barrels imports.
 
 # Steps
 
 Steps to recreate this sample:
 
-- Copy the content from _00 base_
+- Copy the content from _01 no-treeshaking-material-ui_
 
 - First install the packages needed, run from the bash / cmd:
 
@@ -16,19 +14,20 @@ Steps to recreate this sample:
 npm install
 ```
 
-- Now let's install _material_ui_ library.
+- We are going to use the latest version from material-ui (@next) this version contains a es6 version under
+the folder _nodemodules/material-ui/es_
 
-```
-npm install material-ui --save
-```
-
-- Let's install the typings for this library:
-
-```
-npm install @types/material-ui --save-dev
+```bash
+npm install material-ui@next --save
 ```
 
-- Let's add a simple component (in a way that three shaking is not triggered):
+- Let's uninstall the typings (@next already contains the typings in it)
+
+```bash
+npm uninstall @types/material-ui --save-dev
+```
+
+- Let's replace all the imports in our app.tsx
 
 _app.tsx_
 
@@ -36,44 +35,51 @@ _app.tsx_
 import * as React from 'react';
 import { HelloComponent } from './hello';
 import { NameEditComponent } from './nameEdit';
-+ import {AppBar} from "material-ui";
-+ import {MuiThemeProvider} from "material-ui/styles";
+- import {AppBar} from "material-ui";
+- import {MuiThemeProvider} from "material-ui/styles";
++ import {AppBar, Toolbar, Typography, MuiThemeProvider} from "material-ui";
+```
 
+- In our webpack config let's create an alias to make material ui imports point to
+it's es6 version.
 
-interface Props {
-}
+_webpack.config.js_
 
-interface State {
-  userName: string;
-}
+```diff
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx'],
++    alias: {
++      "material-ui": 'material-ui/es'
++    }
+  },
+```
 
-export class App extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
+- Let's add some updates on the tsx (new version has some breaking changes)
 
-    this.state = { userName: 'defaultUserName' };
-  }
+_app.tsx_
 
-  setUsernameState = (event) => {
-    this.setState({ userName: event.target.value });
-  }
-
-
+```diff
   public render() {
     return (
       <>
-+       <MuiThemeProvider>
-+        <AppBar
-+            title="Title"
-+            iconClassNameRight="muidocs-icon-navigation-expand-more"
-+          />
+-        <MuiThemeProvider>
+-          <AppBar
+-              title="Title"
+-              iconClassNameRight="muidocs-icon-navigation-expand-more"
+-            />
++        <AppBar position="static" color="default">
++          <Toolbar>
++            <Typography variant="title" color="inherit">
++              Title
++            </Typography>
++          </Toolbar>
++        </AppBar>
           <HelloComponent userName={this.state.userName} />
           <NameEditComponent userName={this.state.userName} onChange={this.setUsernameState} />
-+       </MuiThemeProvider>
+-        </MuiThemeProvider>
       </>
     );
   }
-}
 ```
 
 - Second run the _run_ custom command.
@@ -82,6 +88,4 @@ export class App extends React.Component<Props, State> {
 npm run build
 ```
 
-Now we can see we got an issue with the library we have imported, it adds just 985Kb to our bundle size :-(.
-
-In the next sample we will change ther way we import from this library so it uses the es6 modules and it tree shaking can be applied.
+Now if we run the sample we got material-ui tree shaked, just only 56Kb !

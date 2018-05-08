@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { HelloComponent } from './hello';
 import { NameEditComponent } from './nameEdit';
-import {AppBar} from "material-ui";
-import {MuiThemeProvider} from "material-ui/styles";
-
+import {AppBar, Toolbar, Typography, MuiThemeProvider} from "material-ui";
 
 interface Props {
 }
@@ -27,14 +25,15 @@ export class App extends React.Component<Props, State> {
   public render() {
     return (
       <>
-        <MuiThemeProvider>
-          <AppBar
-              title="Title"
-              iconClassNameRight="muidocs-icon-navigation-expand-more"
-            />
-          <HelloComponent userName={this.state.userName} />
-          <NameEditComponent userName={this.state.userName} onChange={this.setUsernameState} />
-        </MuiThemeProvider>
+        <AppBar position="static" color="default">
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              Title
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <HelloComponent userName={this.state.userName} />
+        <NameEditComponent userName={this.state.userName} onChange={this.setUsernameState} />
       </>
     );
   }
