@@ -24,7 +24,7 @@ npm install material-ui@next --save
 - Let's uninstall the typings (@next already contains the typings in it)
 
 ```bash
-npm install material-ui@next --save
+npm uninstall @types/material-ui --save-dev
 ```
 
 - Let's replace all the imports in our app.tsx
