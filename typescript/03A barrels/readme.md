@@ -28,3 +28,5 @@ _.babelrc_
 +  }
 }
 ```
+
+> IMPORTANT: This doesn't work if you split into a vendor chunk.
