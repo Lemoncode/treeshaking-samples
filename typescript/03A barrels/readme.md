@@ -23,9 +23,9 @@ _.babelrc_
       }
     ]
   ],
-+  {
++  "plugins": [
 +    ["import", {"libraryName": "material-ui", "libraryDirectory": "", "camel2DashComponentName": false}]
-+  }
++  ]
 }
 ```
 
