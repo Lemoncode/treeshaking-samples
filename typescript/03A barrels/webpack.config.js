@@ -17,7 +17,7 @@ module.exports = {
   ],
   output: {
     path: path.join(basePath, 'dist'),
-    filename: 'bundle.js',        
+    filename: 'bundle.js',
   },
   devtool: 'source-map',
   devServer: {
@@ -26,7 +26,7 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     stats: 'errors-only'
-  },  
+  },
   module: {
     rules: [
       {
@@ -38,7 +38,7 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,        
+        test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
