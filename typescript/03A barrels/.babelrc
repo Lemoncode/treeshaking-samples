@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ]
+  ],
+  "plugins": [
+    ["import", {"libraryName": "material-ui", "libraryDirectory": "", "camel2DashComponentName": false}]
+  ]
+}
