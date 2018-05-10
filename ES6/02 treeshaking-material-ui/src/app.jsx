@@ -1,8 +1,8 @@
 import React from 'react';
 import { HelloComponent } from './hello';
 import { NameEditComponent } from './nameEdit';
-import AppBar from "material-ui";
-import MuiThemeProvider  from "material-ui";
+import AppBar from "material-ui/AppBar";
+import MuiThemeProvider  from "material-ui/styles/MuiThemeProvider";
 
 export class App extends React.Component {
   constructor(props) {

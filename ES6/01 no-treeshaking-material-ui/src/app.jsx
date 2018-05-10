@@ -1,7 +1,8 @@
 import React from 'react';
 import { HelloComponent } from './hello';
 import { NameEditComponent } from './nameEdit';
-import {AppBar, MuiThemeProvider} from "material-ui";
+import {  AppBar, MuiThemeProvider }  from "material-ui";
+
 
 export class App extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ export class App extends React.Component {
           userName={this.state.userName}
           onChange={this.setUsernameState}
         />
-        </MuiThemeProvider>
+      </MuiThemeProvider>
       </div>
     );
   }
