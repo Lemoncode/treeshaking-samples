@@ -18,7 +18,7 @@ npm install
 - Now let's install _material_ui_ library.
 
 ```
-npm install material-ui --save
+npm install material-ui@next --save
 ```
 
 - Let's add a simple component (in a way that three shaking is not triggered):
