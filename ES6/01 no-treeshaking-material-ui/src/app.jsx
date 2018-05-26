@@ -16,7 +16,6 @@ export class App extends React.Component {
   }
 
   setUsernameState(event) {
-    // If the state gets more complex we should use object.assign
     this.setState({
       userName: event.target.value,
     });

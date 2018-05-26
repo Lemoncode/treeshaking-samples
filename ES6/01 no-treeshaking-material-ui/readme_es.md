@@ -1,27 +1,26 @@
 # No tree shaking material ui
 
-This sample start from 00 Base, in this case we are going to install a popular ui library (material ui)
-and we are going to import components from there in way that tree shaking is not enabled
+Este ejemplo comienza desde 00 Base. En este caso vamos a instalar un librería de ui muy popular (material ui) y vamos a importar los componentes de ahí de forma que no se aplique el tree shaking
 
-# Steps
+# Pasos
 
-Steps to recreate this sample:
+Pasos para reproducir este ejemplo:
 
-- Copy the content from _00 base_
+- Copiar el contenido de _00 base_
 
-- First install the packages needed, run from the bash / cmd:
+- Primero instalar los paquetes que necesitamos, ejecutando desde bash / cmd:
 
 ```bash
 npm install
 ```
 
-- Now let's install _material_ui_ library.
+- Ahora vamos a instalar la librería _material_ui_ .
 
 ```
 npm install material-ui@next --save
 ```
 
-- Let's add a simple component (in a way that tree shaking is not triggered):
+- Añadamos un componente simple (de forma que no se dispare el tree shaking):
 
 _app.jsx_
 
@@ -69,12 +68,12 @@ export class App extends React.Component {
 }
 ```
 
-- Second run the _run_ custom command.
+- Segundo ejecutar el comando _run_ personalizado.
 
 ```bash
 npm run build
 ```
 
-Now we can see we got an issue with the library we have imported, it adds just 985Kb to our bundle size :-(.
+Ahora podemos ver que tenemos un problema con la librería que hemos importado, añade 985Kb al tamaño de nuestro bundle :-(.
 
-In the next sample we will change the way we import from this library so it uses the es6 modules and it tree shaking can be applied.
+En el próximo ejemplo cambiaremos la forma de importar esta librería para que se aplique el tree shaking.
